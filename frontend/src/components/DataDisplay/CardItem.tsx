@@ -5,12 +5,14 @@ import CardItemLink from './CardItemLink'
 import CardItemLoved from './CardItemLoved'
 
 interface ICardItem {
+  cardId: Number,
   title: String,
   description: String,
   link: String
 }
 
 export default function CardItem({
+  cardId,
   title,
   description,
   link
