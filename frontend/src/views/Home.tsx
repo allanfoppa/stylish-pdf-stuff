@@ -1,4 +1,4 @@
-import { Container, Flex, Text } from "@chakra-ui/react";
+import { Container, Flex } from "@chakra-ui/react";
 
 import CardItem from "../components/DataDisplay/CardItem";
 import Hero from "../components/Layout/Hero";
