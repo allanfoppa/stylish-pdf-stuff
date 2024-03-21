@@ -3,12 +3,15 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 interface ICardItemLink {
-  link: String
+  link: String,
+  toggleColors: any | undefined
 }
 
 export default function CardItemLink({
-  link
+  link,
+  toggleColors
 }: ICardItemLink) {
+
   return(
     <Link to={`${link}`} style={{ width: "100%" }}>
       <Flex
@@ -18,10 +21,10 @@ export default function CardItemLink({
         roundedBottom={'sm'}
         cursor={'pointer'}
       >
-          <Text fontSize={'md'} fontWeight={'semibold'}>
+          <Text fontSize={'md'} fontWeight={'semibold'} color={toggleColors}>
               Go to
           </Text>
-          <BsArrowUpRight />
+          <BsArrowUpRight color={toggleColors} />
       </Flex>
     </Link>
   )

@@ -4,12 +4,14 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 interface ICardItemLoved {
   liked: boolean,
-  setLiked: Dispatch<SetStateAction<boolean>>
+  setLiked: Dispatch<SetStateAction<boolean>>,
+  toggleColors: any | undefined
 }
 
 export default function CardItemLoved({
   liked,
-  setLiked
+  setLiked,
+  toggleColors
 }: ICardItemLoved) {
   return(
     <Flex
@@ -21,8 +23,8 @@ export default function CardItemLoved({
       cursor="pointer"
       onClick={() => setLiked(!liked)}>
       {liked
-        ? <BsHeartFill fill="red" fontSize={'24px'} />
-        : <BsHeart fontSize={'24px'} />
+        ? <BsHeartFill color={toggleColors} fill="red" fontSize={'24px'} />
+        : <BsHeart color={toggleColors} fontSize={'24px'} />
       }
     </Flex>
   )
