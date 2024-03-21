@@ -3,6 +3,9 @@
 /node_modules
 /build
 
+# created pdf
+/src/components/html-to-pdf/pdf/custom*
+
 # Logs
 logs
 *.log
