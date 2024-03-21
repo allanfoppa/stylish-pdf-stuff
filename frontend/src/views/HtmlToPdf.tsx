@@ -9,11 +9,14 @@ import { codeTheme } from '../constants/code-theme';
 import { handleWithTabPressed } from '../utils/handle-with-tab-pressed';
 import { handleSetCodeTheme } from '../utils/handle-set-code-theme';
 import CodeBlock from '../components/DataDisplay/CodeBlock';
+import { htmlToPDF } from '../services/html-to-pdf.service';
 
 export default function HtmlToPdf() {
 
   const [ codeString, setCodeString ] = useState(initalHTMLSnippet)
   const [ codeCurrentTheme, setCodeCurrentTheme ] = useState(stackoverflowDark)
+
+  const generatePDF = () => htmlToPDF({ htmlContent: codeString })
 
   return(
     <Container centerContent>
@@ -43,6 +46,7 @@ export default function HtmlToPdf() {
             <Button
               width={"100%"}
               marginTop={3}
+              onClick={() => generatePDF()}
             >
               CONVERT
             </Button>
