@@ -22,9 +22,19 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## CLI
+
+### Commands
+
+nest generate controller / nest g co
+nest generate service / nest g s
+nest generate module <name> / nest g mo
+nest g class address/dto/create-address.dto --no-spec
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Puppeteer](https://pptr.dev/)
 
 ## Installation
 
