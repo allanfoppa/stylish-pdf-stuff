@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom/client"
 import reportWebVitals from "./utils/reportWebVitals"
 import { router } from "./routes/router"
 import { RouterProvider } from "react-router-dom"
+import { AppProvider } from "./contexts/App.context"
 
 const container = document.getElementById("root")
 if (!container) throw new Error('Failed to find the root element');
@@ -11,10 +12,12 @@ const root = ReactDOM.createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <ColorModeScript />
-      <RouterProvider router={router} />
-    </ChakraProvider>
+    <AppProvider>
+      <ChakraProvider theme={theme}>
+        <ColorModeScript />
+        <RouterProvider router={router} />
+      </ChakraProvider>
+    </AppProvider>
   </React.StrictMode>,
 )
 

@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 
 interface ICodeBlock {
@@ -12,13 +13,15 @@ export default function CodeBlock({
   codeString
 }: ICodeBlock) {
   return(
-    <SyntaxHighlighter
-      language={`${lang}`}
-      style={codeCurrentTheme}
-      showLineNumbers
-      wrapLongLines={true}
-    >
-      {codeString}
-    </SyntaxHighlighter>
+    <Flex marginBottom={10}>
+      <SyntaxHighlighter
+        language={`${lang}`}
+        style={codeCurrentTheme}
+        showLineNumbers
+        wrapLongLines={true}
+      >
+        {codeString}
+      </SyntaxHighlighter>
+    </Flex>
   )
 }

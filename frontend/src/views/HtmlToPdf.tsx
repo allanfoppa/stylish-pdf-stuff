@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Box, Button, Container, Flex, Select, Text, Textarea } from "@chakra-ui/react";
+import { CSSProperties, useContext, useState } from 'react';
+import { Box, Button, Container, Flex, Select, Spinner, Text, Textarea } from "@chakra-ui/react";
 
 import { stackoverflowDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
@@ -10,13 +10,27 @@ import { handleWithTabPressed } from '../utils/handle-with-tab-pressed';
 import { handleSetCodeTheme } from '../utils/handle-set-code-theme';
 import CodeBlock from '../components/DataDisplay/CodeBlock';
 import { htmlToPDF } from '../services/html-to-pdf.service';
+import { AppContext } from '../contexts/App.context';
 
 export default function HtmlToPdf() {
 
-  const [ codeString, setCodeString ] = useState(initalHTMLSnippet)
-  const [ codeCurrentTheme, setCodeCurrentTheme ] = useState(stackoverflowDark)
+  const [ codeString, setCodeString ] = useState<string>(initalHTMLSnippet)
+  const [ codeCurrentTheme, setCodeCurrentTheme ] = useState<CSSProperties>(stackoverflowDark)
 
-  const generatePDF = () => htmlToPDF({ htmlContent: codeString })
+  const { loading, setLoading } = useContext(AppContext)
+
+  const generatePDF = async () => {
+    setLoading(true);
+    try {
+      await htmlToPDF({ htmlContent: codeString });
+      // After PDF generation is complete, set loading to false
+      setLoading(false);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      // Handle error as needed
+      setLoading(false); // Make sure to set loading to false on error too
+    }
+  }
 
   return(
     <Container centerContent>
@@ -35,6 +49,7 @@ export default function HtmlToPdf() {
           <Textarea
             resize="none"
             id="html-code"
+            rows={15}
             onChange={(e) => {
               setCodeString(e.target.value)
               handleWithTabPressed({ id: "html-code" })
@@ -48,7 +63,10 @@ export default function HtmlToPdf() {
               marginTop={3}
               onClick={() => generatePDF()}
             >
+            <Flex alignItems={"center"} gap={2}>
+              {loading && <Spinner />}
               CONVERT
+            </Flex>
             </Button>
           )}
         </Box>
