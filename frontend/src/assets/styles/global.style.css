@@ -1,0 +1,32 @@
+
+/* COMMOM */
+
+.chakra-ui-light::-webkit-scrollbar,
+.chakra-ui-dark::-webkit-scrollbar {
+  width: 0.625rem;
+}
+
+.chakra-ui-light::-webkit-scrollbar-track,
+.chakra-ui-dark::-webkit-scrollbar-track {
+  background: rgba(160, 160, 160, 0.30);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.chakra-ui-light::-webkit-scrollbar-thumb:hover,
+.chakra-ui-dark::-webkit-scrollbar-thumb:hover {
+  background: #010007;
+}
+
+/* LIGHT THEME */
+
+.chakra-ui-light::-webkit-scrollbar-thumb {
+  background: #34374c;
+  border-radius: 1.5rem;
+}
+
+/* DARK THEME */
+
+.chakra-ui-dark::-webkit-scrollbar-thumb {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+}

@@ -6,6 +6,8 @@ import { router } from "./routes/router"
 import { RouterProvider } from "react-router-dom"
 import { AppProvider } from "./contexts/App.context"
 
+import "./assets/styles/global.style.css"
+
 const container = document.getElementById("root")
 if (!container) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(container)
