@@ -14,3 +14,9 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
   ========================================================================== */
 
 export const htmlToPDF = `${BASE_URL}/html-to-pdf`;
+
+/*==========================================================================
+  PDF TO PDF
+  ========================================================================== */
+
+export const pdfToPDF = `${BASE_URL}/url-to-pdf/generate`;

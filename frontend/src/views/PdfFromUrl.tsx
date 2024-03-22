@@ -7,6 +7,7 @@ import { defaultUrl } from '../constants/default-url';
 import HeroInternalView from '../components/Layout/HeroInternalView';
 import InputValidation from '../components/Forms/InputValidation';
 import { clearFormikFields } from '../utils/clear-formik-fields';
+import { urlToPDF } from '../services/url-to-pdf.service';
 
 
 export default function PdfFromUrl() {
@@ -22,9 +23,9 @@ export default function PdfFromUrl() {
         .url("Must be a valid URL.")
         .required("URL is a required field."),
     }),
-    onSubmit: (values) => {
+    onSubmit: async ({ url }) => {
       setLoading(true);
-      alert(JSON.stringify(values))
+      await urlToPDF({ urlPath: url });
       setLoading(false);
     }
   })
