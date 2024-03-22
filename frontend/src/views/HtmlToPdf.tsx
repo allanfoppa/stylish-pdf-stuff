@@ -1,9 +1,6 @@
 import { CSSProperties, useContext, useState } from 'react';
 import { Box, Button, Container, Flex, Select, Spinner, Text, Textarea } from "@chakra-ui/react";
-
 import { stackoverflowDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-
-import Title from "../components/Typography/Title";
 import { initalHTMLSnippet } from '../constants/inital-html-snippet';
 import { codeTheme } from '../constants/code-theme';
 import { handleWithTabPressed } from '../utils/handle-with-tab-pressed';
@@ -11,6 +8,7 @@ import { handleSetCodeTheme } from '../utils/handle-set-code-theme';
 import CodeBlock from '../components/DataDisplay/CodeBlock';
 import { htmlToPDF } from '../services/html-to-pdf.service';
 import { AppContext } from '../contexts/App.context';
+import HeroInternalView from '../components/Layout/HeroInternalView';
 
 export default function HtmlToPdf() {
 
@@ -34,10 +32,10 @@ export default function HtmlToPdf() {
 
   return(
     <Container centerContent>
-      <Flex direction={"column"} marginTop={12}>
-        <Title text={"Convert HTML to PDF Document"} />
-        <Text>Convert web pages to PDF documents with gracefully.</Text>
-      </Flex>
+      <HeroInternalView
+        title={'Convert HTML to PDF Document'}
+        text={'Convert web pages to PDF documents with gracefully.'}
+      />
       <Flex direction={"row"} marginTop={12} w={1200} gap={12}>
         <Box
           w={400}
