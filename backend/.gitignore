@@ -5,6 +5,7 @@
 
 # created pdf
 /src/components/html-to-pdf/pdf/custom*
+/src/components/url-to-pdf/pdf/custom*
 
 # Logs
 logs
