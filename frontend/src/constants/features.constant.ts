@@ -12,5 +12,12 @@ export const features = [
     title: "PDF from a URL",
     description: "Convert URL to PDF.",
     link: PATHS.PDF_FROM_A_URL
-  }
+  },
+  // TODO: Dependencie backend convert
+  // {
+  //   id: 3,
+  //   title: "PDF File from Images",
+  //   description: "Convert Images to PDF.",
+  //   link: PATHS.PDF_FILE_FROM_IMAGES
+  // },
 ]

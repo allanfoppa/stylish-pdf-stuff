@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, Text, Center, useColorModeValue, HStack, useColorMode } from '@chakra-ui/react'
 import Title from '../Typography/Title'
 import CardItemLink from './CardItemLink'
 import CardItemLoved from './CardItemLoved'
+import storageManager from '../../utils/storage-manager'
 
 interface ICardItem {
-  cardId: Number,
+  cardId: number,
   title: String,
   description: String,
   link: String
@@ -19,9 +20,24 @@ export default function CardItem({
 }: ICardItem) {
 
   const [ liked, setLiked ] = useState(false)
-
-  const { colorMode } = useColorMode();
+  const [ likedStoraged, setLikedStoraged ] = useState(false)
+  const { colorMode } = useColorMode()
   const toggleColors = colorMode === "light" ? 'unset' : 'white'
+
+  useEffect(() => {
+    const featuresLiked = storageManager.get();
+
+    if (featuresLiked !== null) {
+      const parsedFeatures = JSON.parse(featuresLiked);
+      // Process parsedFeatures here
+      parsedFeatures.map((features: any) => {
+        if (features === cardId) {
+          setLiked(true)
+          setLikedStoraged(true)
+        }
+      })
+    }
+  }, [liked])
 
   return (
     <Center py={6}>
@@ -43,7 +59,7 @@ export default function CardItem({
         </Box>
         <HStack borderTop={'1px'}>
           <CardItemLink link={link} toggleColors={toggleColors} />
-          <CardItemLoved liked={liked} setLiked={setLiked} toggleColors={toggleColors} />
+          <CardItemLoved liked={liked} setLiked={setLiked} toggleColors={toggleColors} cardId={cardId} likedStoraged={likedStoraged} />
         </HStack>
       </Box>
     </Center>
